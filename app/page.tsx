@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/section-header";
-import { StatCard } from "@/components/stat-card";
-import { NewsCard } from "@/components/news-card";
+import { EventCard } from "@/components/event-card";
+import { Carousel3D } from "@/components/carousel-3d";
 import { CTABanner } from "@/components/cta-banner";
-import { STATS, NEWS_ITEMS, EXTERNAL_LINKS } from "@/lib/data";
+import { UPCOMING_EVENTS, EXTERNAL_LINKS } from "@/lib/data";
 
 export default function HomePage() {
   return (
@@ -53,33 +53,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Impact at a Glance */}
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      {/* 3D Photo Carousel */}
+      <section className="overflow-hidden px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            title="Impact at a Glance"
-            subtitle="Our chapter's contributions to the community"
+            title="Our Community in Action"
+            subtitle="Moments from our builds, events, and volunteer experiences"
           />
-          <div className="mt-12 grid grid-cols-2 gap-6 lg:grid-cols-4">
-            {STATS.map((stat) => (
-              <StatCard key={stat.label} stat={stat} />
-            ))}
+          <div className="mt-12">
+            <Carousel3D />
           </div>
         </div>
       </section>
 
-      {/* Latest News */}
+      {/* Upcoming Events */}
       <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-4xl">
           <SectionHeader
-            title="Latest News"
-            subtitle="Stay up to date with our chapter's activities"
+            title="Upcoming Events"
+            subtitle="Get involved with our next build days, socials, and fundraisers"
           />
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {NEWS_ITEMS.map((item) => (
-              <NewsCard key={item.id} item={item} />
-            ))}
-          </div>
+
+          {UPCOMING_EVENTS.length > 0 ? (
+            <div className="mt-12 space-y-6">
+              {UPCOMING_EVENTS.map((event) => (
+                <EventCard key={event.id} event={event} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-12 rounded-xl border border-h4h-gray-200 bg-white p-10 text-center shadow-sm">
+              <p className="text-lg font-medium text-h4h-navy">
+                No upcoming events at the moment
+              </p>
+              <p className="mt-2 text-sm text-h4h-gray-600">
+                Follow us on Instagram to stay in the loop for future events and
+                build days.
+              </p>
+              <Button
+                asChild
+                className="mt-6 rounded-lg bg-h4h-cyan text-white hover:bg-h4h-cyan-dark"
+              >
+                <a
+                  href={EXTERNAL_LINKS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Follow @h4hwesternuniversity
+                </a>
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

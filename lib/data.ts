@@ -7,6 +7,7 @@ import type {
   TeamMember,
   ValueItem,
   TimelineItem,
+  CarouselImage,
 } from "@/types";
 
 export const NAV_LINKS: NavLink[] = [
@@ -59,43 +60,50 @@ export const NEWS_ITEMS: NewsItem[] = [
   },
 ];
 
-export const UPCOMING_EVENTS: Event[] = [
+export const UPCOMING_EVENTS: Event[] = [];
+
+export const CAROUSEL_IMAGES: CarouselImage[] = [
   {
     id: "1",
-    title: "Winter Build Day 2026",
-    description:
-      "Join us for our first build day of the new year! Help us frame walls and install windows on our latest project.",
-    date: "2026-03-01",
-    time: "9:00 AM - 4:00 PM",
-    location: "London, ON",
-    imageUrl: "/images/event-1.jpg",
-    registrationUrl:
-      "https://westernusc.store/product/habitat-for-humanity-western/",
-    isPast: false,
+    src: "/images/carousel/slide-1.jpg",
+    alt: "Volunteers at a build site",
+    caption: "Building together for our community",
   },
   {
     id: "2",
-    title: "Volunteer Orientation",
-    description:
-      "New to Habitat? Join our orientation session to learn about safety protocols, building techniques, and how you can make a difference.",
-    date: "2026-02-15",
-    time: "6:00 PM - 8:00 PM",
-    location: "Western University, UCC Room 56",
-    imageUrl: "/images/event-2.jpg",
-    isPast: false,
+    src: "/images/carousel/slide-2.jpg",
+    alt: "Team photo after a successful build day",
+    caption: "Our incredible team of volunteers",
   },
   {
     id: "3",
-    title: "Spring Fundraiser Gala",
-    description:
-      "An evening of celebration and fundraising to support affordable housing in our community. Dinner, live music, and silent auction.",
-    date: "2026-04-12",
-    time: "7:00 PM - 10:00 PM",
-    location: "Great Hall, Somerville House",
-    imageUrl: "/images/event-3.jpg",
-    registrationUrl:
-      "https://westernusc.store/product/habitat-for-humanity-western/",
-    isPast: false,
+    src: "/images/carousel/slide-3.jpg",
+    alt: "Habitat for Humanity fundraiser event",
+    caption: "Raising funds for affordable housing",
+  },
+  {
+    id: "4",
+    src: "/images/carousel/slide-4.jpg",
+    alt: "Students volunteering during orientation week",
+    caption: "Welcoming new members every year",
+  },
+  {
+    id: "5",
+    src: "/images/carousel/slide-5.jpg",
+    alt: "Community members at a house dedication",
+    caption: "Celebrating a completed home",
+  },
+  {
+    id: "6",
+    src: "/images/carousel/slide-6.jpg",
+    alt: "Painting day with volunteers",
+    caption: "Every brushstroke makes a difference",
+  },
+  {
+    id: "7",
+    src: "/images/carousel/slide-7.jpg",
+    alt: "Club social event",
+    caption: "Building friendships along the way",
   },
 ];
 

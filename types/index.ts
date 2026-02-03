@@ -63,3 +63,10 @@ export interface TimelineItem {
   title: string;
   description: string;
 }
+
+export interface CarouselImage {
+  id: string;
+  src: string;
+  alt: string;
+  caption?: string;
+}
