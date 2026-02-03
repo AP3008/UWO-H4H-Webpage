@@ -1,65 +1,97 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { SectionHeader } from "@/components/section-header";
+import { StatCard } from "@/components/stat-card";
+import { NewsCard } from "@/components/news-card";
+import { CTABanner } from "@/components/cta-banner";
+import { STATS, NEWS_ITEMS, EXTERNAL_LINKS } from "@/lib/data";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-h4h-cyan to-h4h-cyan-dark px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_60%)]" />
+        <div className="relative mx-auto max-w-7xl">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Building Homes.
+              <br />
+              Building Hope.
+            </h1>
+            <p className="mt-6 text-lg leading-relaxed text-white/90 sm:text-xl">
+              Western University&apos;s chapter of Habitat for Humanity is
+              dedicated to building affordable housing and empowering
+              communities in London, Ontario. Join us in making a difference.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-xl bg-white px-8 font-semibold text-h4h-cyan hover:bg-white/90"
+              >
+                <a
+                  href={EXTERNAL_LINKS.membership}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Get Involved
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="rounded-xl border-white px-8 text-white hover:bg-white/10"
+              >
+                <Link href="/about">Learn More</Link>
+              </Button>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Impact at a Glance */}
+      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            title="Impact at a Glance"
+            subtitle="Our chapter's contributions to the community"
+          />
+          <div className="mt-12 grid grid-cols-2 gap-6 lg:grid-cols-4">
+            {STATS.map((stat) => (
+              <StatCard key={stat.label} stat={stat} />
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Latest News */}
+      <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            title="Latest News"
+            subtitle="Stay up to date with our chapter's activities"
+          />
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {NEWS_ITEMS.map((item) => (
+              <NewsCard key={item.id} item={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <CTABanner
+        heading="Ready to make a difference?"
+        description="Join our chapter and help build affordable homes for families in need."
+        primaryLabel="Join Our Chapter"
+        primaryHref={EXTERNAL_LINKS.membership}
+        secondaryLabel="Follow Us on Instagram"
+        secondaryHref={EXTERNAL_LINKS.instagram}
+      />
+    </>
   );
 }
