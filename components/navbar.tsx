@@ -20,7 +20,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-h4h-cyan shadow-md">
+    <header className="sticky top-0 z-50 border-b border-h4h-gray-200 bg-white shadow-sm">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-h4h-navy focus:shadow-lg"
@@ -31,13 +31,16 @@ export function Navbar() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/h4h-logo.png"
+              src="/images/h4h-blue-no-text.png"
               alt="Habitat for Humanity Western University"
-              width={180}
-              height={48}
-              className="h-10 w-auto"
+              width={44}
+              height={44}
+              className="h-10 w-10 rounded-lg"
               priority
             />
+            <span className="hidden text-lg font-bold text-h4h-navy sm:inline">
+              H4H Western
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -48,8 +51,8 @@ export function Navbar() {
                 href={link.href}
                 className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? "bg-white/20 text-white"
-                    : "text-white/90 hover:bg-white/10 hover:text-white"
+                    ? "bg-h4h-cyan-light text-h4h-cyan-dark"
+                    : "text-h4h-gray-600 hover:bg-h4h-gray-50 hover:text-h4h-navy"
                 }`}
               >
                 {link.label}
@@ -59,14 +62,14 @@ export function Navbar() {
               href={EXTERNAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 rounded-lg p-2 text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+              className="ml-2 rounded-lg p-2 text-h4h-gray-600 transition-colors hover:bg-h4h-gray-50 hover:text-h4h-navy"
               aria-label="Follow us on Instagram (opens in new tab)"
             >
               <Instagram className="h-5 w-5" />
             </a>
             <Button
               asChild
-              className="ml-2 bg-white text-h4h-cyan hover:bg-white/90 font-semibold"
+              className="ml-2 rounded-lg bg-h4h-cyan font-semibold text-white hover:bg-h4h-cyan-dark"
             >
               <a
                 href={EXTERNAL_LINKS.membership}
@@ -82,7 +85,7 @@ export function Navbar() {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild className="md:hidden">
               <button
-                className="rounded-lg p-2 text-white transition-colors hover:bg-white/10"
+                className="rounded-lg p-2 text-h4h-navy transition-colors hover:bg-h4h-gray-50"
                 aria-label={open ? "Close menu" : "Open menu"}
               >
                 {open ? (

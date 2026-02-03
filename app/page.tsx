@@ -29,7 +29,7 @@ export default function HomePage() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-xl bg-white px-8 font-semibold text-h4h-cyan hover:bg-white/90"
+                className="rounded-xl bg-h4h-navy px-8 font-semibold text-white hover:bg-h4h-navy/90"
               >
                 <a
                   href={EXTERNAL_LINKS.membership}
@@ -44,7 +44,7 @@ export default function HomePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-xl border-white px-8 text-white hover:bg-white/10"
+                className="rounded-xl border-white/40 px-8 text-white hover:bg-white/10"
               >
                 <Link href="/about">Learn More</Link>
               </Button>

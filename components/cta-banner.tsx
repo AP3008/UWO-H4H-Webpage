@@ -18,13 +18,13 @@ export function CTABanner({
   secondaryHref,
 }: CTABannerProps) {
   return (
-    <section className="bg-h4h-cyan px-4 py-16 sm:px-6 lg:px-8">
+    <section className="bg-h4h-navy px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-bold text-white sm:text-4xl">
           {heading}
         </h2>
         {description && (
-          <p className="mx-auto mt-4 max-w-xl text-lg text-white/90">
+          <p className="mx-auto mt-4 max-w-xl text-lg text-white/70">
             {description}
           </p>
         )}
@@ -32,7 +32,7 @@ export function CTABanner({
           <Button
             asChild
             size="lg"
-            className="bg-white text-h4h-cyan hover:bg-white/90 font-semibold rounded-xl px-8"
+            className="bg-h4h-cyan text-white hover:bg-h4h-cyan-dark font-semibold rounded-xl px-8"
           >
             <a href={primaryHref} target="_blank" rel="noopener noreferrer">
               {primaryLabel}
@@ -43,7 +43,7 @@ export function CTABanner({
               asChild
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white/10 rounded-xl px-8"
+              className="border-white/30 text-white hover:bg-white/10 rounded-xl px-8"
             >
               <a href={secondaryHref} target="_blank" rel="noopener noreferrer">
                 {secondaryLabel}

@@ -55,7 +55,7 @@ export function EventCard({ event }: { event: Event }) {
               <Button
                 asChild
                 size="sm"
-                className="bg-h4h-cyan text-white hover:bg-h4h-cyan-dark rounded-lg"
+                className="bg-h4h-navy text-white hover:bg-h4h-navy/90 rounded-lg"
               >
                 <a
                   href={event.registrationUrl}
