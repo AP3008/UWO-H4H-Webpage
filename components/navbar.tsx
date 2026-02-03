@@ -39,7 +39,7 @@ export function Navbar() {
               priority
             />
             <span className="hidden text-lg font-bold text-h4h-navy sm:inline">
-              H4H Western
+              Western Habitat for Humanity
             </span>
           </Link>
 
