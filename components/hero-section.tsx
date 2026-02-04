@@ -8,11 +8,28 @@ import { EXTERNAL_LINKS } from "@/lib/data";
 
 export function HeroSection() {
   const [panelVisible, setPanelVisible] = useState(false);
+  const [textAnimate, setTextAnimate] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setPanelVisible(true), 5000);
-    return () => clearTimeout(timer);
+    const mobile = window.matchMedia("(max-width: 767px)").matches;
+    setIsMobile(mobile);
+    if (mobile) {
+      // On mobile there's no video/panel animation — show text immediately
+      setPanelVisible(true);
+      setTextAnimate(true);
+    } else {
+      const panelTimer = setTimeout(() => setPanelVisible(true), 5000);
+      return () => clearTimeout(panelTimer);
+    }
   }, []);
+
+  useEffect(() => {
+    if (isMobile || !panelVisible) return;
+    // Start text write-in after the panel slide-in finishes (~1s)
+    const textTimer = setTimeout(() => setTextAnimate(true), 1000);
+    return () => clearTimeout(textTimer);
+  }, [panelVisible, isMobile]);
 
   return (
     <section className="relative overflow-hidden bg-h4h-gray-900">
@@ -52,7 +69,18 @@ export function HeroSection() {
               className="h-24 w-24 rounded-2xl md:h-28 md:w-28 lg:h-32 lg:w-32"
               priority
             />
-            <h1 className="mt-6 text-center text-xl font-bold text-white md:text-2xl lg:text-3xl">
+            <h1
+              className="mt-6 text-center text-xl font-bold text-white md:text-2xl lg:text-3xl"
+              style={{
+                fontFamily: "var(--font-shadows), cursive",
+                ...(isMobile
+                  ? {}
+                  : {
+                      clipPath: textAnimate ? "inset(0 0% 0 0)" : "inset(0 100% 0 0)",
+                      animation: textAnimate ? "write-in 1.5s ease-out forwards" : "none",
+                    }),
+              }}
+            >
               Western Habitat
               <br />
               for Humanity
@@ -61,6 +89,14 @@ export function HeroSection() {
               asChild
               size="lg"
               className="mt-6 rounded-xl bg-h4h-navy px-8 font-semibold text-white hover:bg-h4h-navy/90"
+              style={
+                isMobile
+                  ? {}
+                  : {
+                      opacity: 0,
+                      animation: textAnimate ? "fade-in 0.6s ease forwards 1.5s" : "none",
+                    }
+              }
             >
               <a
                 href={EXTERNAL_LINKS.membership}
