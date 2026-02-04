@@ -43,7 +43,7 @@ export function CTABanner({
               asChild
               variant="outline"
               size="lg"
-              className="border-white/30 text-white hover:bg-white/10 rounded-xl px-8"
+              className="border-h4h-cyan text-h4h-cyan hover:bg-h4h-cyan hover:text-white rounded-xl px-8"
             >
               <a href={secondaryHref} target="_blank" rel="noopener noreferrer">
                 {secondaryLabel}
