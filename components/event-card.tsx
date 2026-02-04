@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ImagePlaceholder } from "@/components/image-placeholder";
+import { SketchyCardBorder } from "@/components/sketchy-elements";
 import type { Event } from "@/types";
 
 export function EventCard({ event }: { event: Event }) {
@@ -11,7 +12,10 @@ export function EventCard({ event }: { event: Event }) {
   const day = date.getDate();
 
   return (
-    <Card className="overflow-hidden rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg">
+    <Card className="relative overflow-hidden rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg">
+      {/* Subtle sketchy border overlay */}
+      <SketchyCardBorder className="opacity-15 text-h4h-gray-300" />
+
       <div className="flex flex-col sm:flex-row">
         {/* Date Badge */}
         <div className="flex items-center justify-center bg-h4h-cyan px-6 py-4 sm:min-w-[100px] sm:flex-col">

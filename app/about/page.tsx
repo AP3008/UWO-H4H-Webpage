@@ -10,6 +10,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeader } from "@/components/section-header";
 import { CTABanner } from "@/components/cta-banner";
 import { VALUES, TIMELINE, EXTERNAL_LINKS } from "@/lib/data";
+import {
+  SketchyVerticalLine,
+  SketchyDot,
+  StarDoodle,
+  SketchyCardBorder,
+} from "@/components/sketchy-elements";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -40,7 +46,8 @@ export default function AboutPage() {
       {/* Mission & Vision */}
       <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2">
-          <Card className="rounded-xl border-0 shadow-md">
+          <Card className="relative rounded-xl border-0 shadow-md overflow-hidden">
+            <SketchyCardBorder className="opacity-20 text-h4h-gray-200" />
             <CardContent className="p-8">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-h4h-cyan">
                 Our Mission
@@ -59,7 +66,8 @@ export default function AboutPage() {
             </CardContent>
           </Card>
 
-          <Card className="rounded-xl border-0 shadow-md">
+          <Card className="relative rounded-xl border-0 shadow-md overflow-hidden">
+            <SketchyCardBorder className="opacity-20 text-h4h-gray-200" />
             <CardContent className="p-8">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-h4h-cyan">
                 Our Vision
@@ -87,8 +95,10 @@ export default function AboutPage() {
             subtitle="Key milestones in our chapter's history"
           />
           <div className="relative mt-12">
-            {/* Timeline line */}
-            <div className="absolute left-4 top-0 h-full w-0.5 bg-h4h-gray-200 sm:left-1/2 sm:-translate-x-px" />
+            {/* Sketchy timeline line */}
+            <div className="absolute left-4 top-0 bottom-0 sm:left-1/2 sm:-translate-x-px">
+              <SketchyVerticalLine className="text-h4h-gray-300" height="h-full" />
+            </div>
 
             <div className="space-y-10">
               {TIMELINE.map((item, i) => (
@@ -96,8 +106,10 @@ export default function AboutPage() {
                   key={item.year}
                   className="relative flex items-start gap-6 sm:gap-0"
                 >
-                  {/* Dot */}
-                  <div className="absolute left-4 top-1 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-h4h-cyan bg-white sm:left-1/2" />
+                  {/* Sketchy dot */}
+                  <div className="absolute left-4 top-1 z-10 -translate-x-1/2 sm:left-1/2">
+                    <SketchyDot className="w-4 h-4 text-h4h-cyan" />
+                  </div>
 
                   {/* Content */}
                   <div
@@ -137,10 +149,12 @@ export default function AboutPage() {
               return (
                 <Card
                   key={value.title}
-                  className="rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg"
+                  className="relative rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg overflow-hidden"
                 >
+                  <SketchyCardBorder className="opacity-15 text-h4h-gray-300" />
                   <CardContent className="flex gap-4 p-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-h4h-cyan-light">
+                    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-h4h-cyan-light">
+                      <StarDoodle className="absolute -top-1 -right-1 w-3 h-3 text-h4h-cyan/40" />
                       <Icon className="h-6 w-6 text-h4h-cyan" />
                     </div>
                     <div>

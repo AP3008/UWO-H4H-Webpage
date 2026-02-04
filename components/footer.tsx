@@ -2,10 +2,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { Instagram, ExternalLink } from "lucide-react";
 import { NAV_LINKS, EXTERNAL_LINKS } from "@/lib/data";
+import { SketchyDivider, StarDoodle } from "@/components/sketchy-elements";
 
 export function Footer() {
   return (
-    <footer className="bg-h4h-navy text-white">
+    <footer className="relative bg-h4h-navy text-white overflow-hidden">
+      {/* Wavy top edge */}
+      <SketchyDivider
+        className="absolute -top-1 left-0 right-0"
+        color="#1B2A4A"
+        flip
+      />
+
+      {/* Decorative stars */}
+      <StarDoodle className="absolute top-8 right-[5%] w-4 h-4 text-white/10" />
+      <StarDoodle className="absolute bottom-16 left-[8%] w-3 h-3 text-white/10" />
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {/* Logo & Description */}

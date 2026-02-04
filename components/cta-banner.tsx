@@ -1,4 +1,9 @@
 import { Button } from "@/components/ui/button";
+import {
+  StarDoodle,
+  SquiggleDoodle,
+  SketchyDivider,
+} from "@/components/sketchy-elements";
 
 interface CTABannerProps {
   heading: string;
@@ -18,8 +23,20 @@ export function CTABanner({
   secondaryHref,
 }: CTABannerProps) {
   return (
-    <section className="bg-h4h-navy px-4 py-16 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl text-center">
+    <section className="relative bg-h4h-navy px-4 py-16 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Wavy top edge */}
+      <SketchyDivider
+        className="absolute -top-1 left-0 right-0"
+        color="#1B2A4A"
+        flip
+      />
+
+      {/* Decorative stars */}
+      <StarDoodle className="absolute top-8 left-[8%] w-5 h-5 text-white/15" />
+      <StarDoodle className="absolute top-16 right-[12%] w-4 h-4 text-white/10" />
+      <StarDoodle className="absolute bottom-12 left-[15%] w-3 h-3 text-white/10" />
+
+      <div className="relative mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-bold text-white sm:text-4xl">
           {heading}
         </h2>
@@ -51,6 +68,9 @@ export function CTABanner({
             </Button>
           )}
         </div>
+
+        {/* Squiggle below buttons */}
+        <SquiggleDoodle className="mx-auto mt-6 text-white/20" />
       </div>
     </section>
   );

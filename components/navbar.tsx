@@ -15,12 +15,32 @@ import {
 } from "@/components/ui/sheet";
 import { NAV_LINKS, EXTERNAL_LINKS } from "@/lib/data";
 
+// Subtle sketchy bottom border for navbar
+function SketchyNavBorder() {
+  return (
+    <svg
+      className="absolute bottom-0 left-0 right-0 h-1 w-full text-h4h-gray-200"
+      viewBox="0 0 1200 4"
+      preserveAspectRatio="none"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 2 Q50 0 100 2.5 Q150 4 200 2 Q250 0.5 300 2.5 Q350 4 400 2 Q450 0 500 2.5 Q550 4 600 2 Q650 0.5 700 2.5 Q750 4 800 2 Q850 0 900 2.5 Q950 4 1000 2 Q1050 0.5 1100 2.5 Q1150 3.5 1200 2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-h4h-gray-200 bg-white shadow-sm">
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-h4h-navy focus:shadow-lg"
@@ -139,6 +159,7 @@ export function Navbar() {
           </Sheet>
         </div>
       </nav>
+      <SketchyNavBorder />
     </header>
   );
 }

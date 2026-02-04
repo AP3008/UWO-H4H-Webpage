@@ -4,6 +4,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { ImagePlaceholder } from "@/components/image-placeholder";
+import { SketchyCardBorder } from "@/components/sketchy-elements";
 import type { NewsItem } from "@/types";
 
 export function NewsCard({ item }: { item: NewsItem }) {
@@ -14,7 +15,10 @@ export function NewsCard({ item }: { item: NewsItem }) {
   });
 
   return (
-    <Card className="overflow-hidden rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg">
+    <Card className="relative overflow-hidden rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg">
+      {/* Subtle sketchy border overlay */}
+      <SketchyCardBorder className="opacity-15 text-h4h-gray-300" />
+
       <CardHeader className="p-0">
         <ImagePlaceholder
           label={item.title}

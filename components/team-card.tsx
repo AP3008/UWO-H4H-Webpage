@@ -1,6 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ImagePlaceholder } from "@/components/image-placeholder";
+import {
+  StarDoodle,
+  SketchyTopBorder,
+  SketchyCardBorder,
+} from "@/components/sketchy-elements";
 import type { TeamMember } from "@/types";
 
 export function TeamCard({ member }: { member: TeamMember }) {
@@ -8,11 +13,22 @@ export function TeamCard({ member }: { member: TeamMember }) {
 
   return (
     <Card
-      className={`overflow-hidden rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg ${
-        isVP ? "border-t-4 border-t-h4h-cyan" : ""
-      }`}
+      className={`relative overflow-hidden rounded-xl border-0 shadow-md transition-shadow hover:shadow-lg`}
     >
-      <CardContent className={`flex flex-col items-center ${isVP ? "p-6" : "p-4"}`}>
+      {/* Sketchy top border for VPs */}
+      {isVP && (
+        <>
+          <SketchyTopBorder className="absolute top-0 left-0 right-0 text-h4h-cyan" />
+          <StarDoodle className="absolute top-2 right-2 w-4 h-4 text-h4h-cyan/40" />
+        </>
+      )}
+
+      {/* Subtle sketchy border for all cards */}
+      <SketchyCardBorder className="opacity-20 text-h4h-gray-200" />
+
+      <CardContent
+        className={`flex flex-col items-center ${isVP ? "p-6 pt-4" : "p-4"}`}
+      >
         {/* Headshot placeholder */}
         <div
           className={`overflow-hidden rounded-full ${

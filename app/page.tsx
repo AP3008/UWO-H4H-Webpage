@@ -5,6 +5,7 @@ import { Carousel3D } from "@/components/carousel-3d";
 import { HeroSection } from "@/components/hero-section";
 import { CTABanner } from "@/components/cta-banner";
 import { UPCOMING_EVENTS, EXTERNAL_LINKS } from "@/lib/data";
+import { SketchyDivider, StarDoodle } from "@/components/sketchy-elements";
 
 export default function HomePage() {
   return (
@@ -12,7 +13,11 @@ export default function HomePage() {
       <HeroSection />
 
       {/* 3D Photo Carousel */}
-      <section className="overflow-hidden px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="relative overflow-hidden px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        {/* Decorative stars */}
+        <StarDoodle className="absolute top-12 left-[5%] w-4 h-4 text-h4h-cyan/20" />
+        <StarDoodle className="absolute bottom-20 right-[8%] w-5 h-5 text-h4h-cyan/15" />
+
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             title="Our Community in Action"
@@ -23,6 +28,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Wavy divider between sections */}
+      <SketchyDivider color="#F8FAFC" flip className="-mb-1" />
 
       {/* Upcoming Events */}
       <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
