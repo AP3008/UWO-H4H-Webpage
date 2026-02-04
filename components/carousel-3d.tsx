@@ -176,7 +176,7 @@ export function Carousel3D() {
           return (
             <div
               key={img.id}
-              className="absolute left-1/2 top-1/2 w-[260px] sm:w-[320px] md:w-[380px]"
+              className="absolute left-1/2 top-1/2 w-[320px] sm:w-[400px] md:w-[480px]"
               style={{
                 transform: `translate(-50%, -50%) translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
                 opacity,
