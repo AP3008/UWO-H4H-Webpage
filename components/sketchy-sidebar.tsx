@@ -58,7 +58,7 @@ function SketchyUnderline({
                 strokeDasharray: pathLength,
                 strokeDashoffset: animate ? 0 : pathLength,
                 transition: animate
-                  ? "stroke-dashoffset 1.2s ease-out"
+                  ? "stroke-dashoffset 0.8s ease-out 0.7s"
                   : "none",
               }
         }
@@ -102,11 +102,51 @@ function SketchyBorder() {
   );
 }
 
+// Animated word component - each word reveals sequentially
+function AnimatedWord({
+  word,
+  delay,
+  animate,
+  isMobile,
+}: {
+  word: string;
+  delay: number;
+  animate: boolean;
+  isMobile: boolean;
+}) {
+  return (
+    <span
+      className="inline-block"
+      style={
+        isMobile
+          ? {}
+          : {
+              opacity: animate ? 1 : 0,
+              transform: animate ? "translateY(0)" : "translateY(8px)",
+              transition: animate
+                ? `opacity 0.4s ease ${delay}s, transform 0.4s ease ${delay}s`
+                : "none",
+            }
+      }
+    >
+      {word}
+    </span>
+  );
+}
+
 export function SketchySidebar({
   textAnimate,
   buttonVisible,
   isMobile,
 }: SketchySidebarProps) {
+  // Words to animate in sequence with their delays
+  const headingWords = [
+    { word: "Western", delay: 0 },
+    { word: "Habitat", delay: 0.15 },
+    { word: "for", delay: 0.3 },
+    { word: "Humanity", delay: 0.45 },
+  ];
+
   return (
     <div className="relative z-10 flex h-full flex-col items-center justify-center px-6">
       {/* Decorative stars */}
@@ -114,35 +154,25 @@ export function SketchySidebar({
       <StarDoodle className="absolute bottom-16 left-6 w-4 h-4 text-h4h-navy opacity-30" />
       <StarDoodle className="absolute top-1/4 left-4 w-6 h-6 text-h4h-cyan-dark opacity-40" />
 
-      {/* Heading */}
-      <h1
-        className="text-center text-xl font-bold text-h4h-navy md:text-2xl lg:text-3xl"
-        style={
-          isMobile
-            ? {}
-            : {
-                clipPath: textAnimate
-                  ? "inset(0 0% 0 0)"
-                  : "inset(0 100% 0 0)",
-                animation: textAnimate
-                  ? "write-in 1.5s ease-out forwards"
-                  : "none",
-              }
-        }
-      >
-        Western Habitat
+      {/* Heading - words animate in sequence */}
+      <h1 className="text-center text-xl font-bold text-h4h-navy md:text-2xl lg:text-3xl">
+        <AnimatedWord word="Western" delay={0} animate={textAnimate} isMobile={isMobile} />
+        {" "}
+        <AnimatedWord word="Habitat" delay={0.15} animate={textAnimate} isMobile={isMobile} />
         <br />
-        for Humanity
+        <AnimatedWord word="for" delay={0.3} animate={textAnimate} isMobile={isMobile} />
+        {" "}
+        <AnimatedWord word="Humanity" delay={0.45} animate={textAnimate} isMobile={isMobile} />
       </h1>
 
-      {/* Sketchy underline */}
+      {/* Sketchy underline - starts after last word (0.45s + 0.4s = 0.85s) */}
       <SketchyUnderline
         className="mt-2"
         animate={textAnimate}
         isMobile={isMobile}
       />
 
-      {/* Tagline */}
+      {/* Tagline - fades in after underline */}
       <p
         className="mt-4 text-center text-base text-h4h-gray-600 md:text-lg"
         style={
@@ -151,7 +181,7 @@ export function SketchySidebar({
             : {
                 opacity: 0,
                 animation: textAnimate
-                  ? "fade-in 0.8s ease forwards 0.5s"
+                  ? "fade-in 0.8s ease forwards 1s"
                   : "none",
               }
         }
