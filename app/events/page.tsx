@@ -46,23 +46,26 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Wavy divider */}
-      <SketchyDivider color="#F8FAFC" flip className="-mb-1" />
-
-      {/* Past Events */}
-      <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <SectionHeader
-            title="Past Events"
-            subtitle="A look back at our previous builds, socials, and fundraisers"
-          />
-          <div className="mt-12 space-y-6">
-            {PAST_EVENTS.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Past Events - only show section if there are past events */}
+      {PAST_EVENTS.length > 0 && (
+        <>
+          {/* Wavy divider */}
+          <SketchyDivider color="#F8FAFC" flip className="-mb-1" />
+          <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+            <div className="mx-auto max-w-4xl">
+              <SectionHeader
+                title="Past Events"
+                subtitle="A look back at our previous builds, socials, and fundraisers"
+              />
+              <div className="mt-12 space-y-6">
+                {PAST_EVENTS.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* CTA */}
       <CTABanner

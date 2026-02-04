@@ -62,74 +62,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 export const UPCOMING_EVENTS: Event[] = [];
 
-export const PAST_EVENTS: Event[] = [
-  {
-    id: "past-1",
-    title: "Fall Build Day 2025",
-    description:
-      "Volunteers framed walls and installed siding at the Habitat build site in East London. Over 25 members came out to help.",
-    date: "2025-10-15",
-    time: "9:00 AM – 4:00 PM",
-    location: "Habitat Build Site, East London",
-    imageUrl: "/images/gallery-1.jpg",
-    isPast: true,
-  },
-  {
-    id: "past-2",
-    title: "Spring Build Day 2025",
-    description:
-      "Our spring build brought together new and returning volunteers for a full day of framing, drywalling, and community bonding.",
-    date: "2025-04-20",
-    time: "8:30 AM – 3:30 PM",
-    location: "Habitat Build Site, East London",
-    imageUrl: "/images/gallery-2.jpg",
-    isPast: true,
-  },
-  {
-    id: "past-3",
-    title: "Paint Day 2025",
-    description:
-      "A fun afternoon of painting interior walls and trim at a nearly completed Habitat home. Perfect for first-time volunteers.",
-    date: "2025-03-10",
-    time: "12:00 PM – 5:00 PM",
-    location: "Habitat Build Site, East London",
-    imageUrl: "/images/gallery-3.jpg",
-    isPast: true,
-  },
-  {
-    id: "past-4",
-    title: "Annual Gala 2025",
-    description:
-      "Our annual fundraiser gala brought together students, faculty, and community members to raise funds for affordable housing.",
-    date: "2025-02-14",
-    time: "6:00 PM – 10:00 PM",
-    location: "Great Hall, Somerville House",
-    imageUrl: "/images/gallery-4.jpg",
-    isPast: true,
-  },
-  {
-    id: "past-5",
-    title: "O-Week Build 2024",
-    description:
-      "Kicked off the school year by welcoming first-year students to their first Habitat build experience during Orientation Week.",
-    date: "2024-09-01",
-    time: "10:00 AM – 3:00 PM",
-    location: "Habitat Build Site, East London",
-    imageUrl: "/images/gallery-7.jpg",
-    isPast: true,
-  },
-  {
-    id: "past-6",
-    title: "House Dedication 2024",
-    description:
-      "Celebrated the completion of a Habitat home with the new homeowner family and all the volunteers who made it possible.",
-    date: "2024-09-05",
-    time: "2:00 PM – 4:00 PM",
-    location: "Habitat Home, London ON",
-    imageUrl: "/images/gallery-6.jpg",
-    isPast: true,
-  },
-];
+export const PAST_EVENTS: Event[] = [];
 
 export const CAROUSEL_IMAGES: CarouselImage[] = [
   {
