@@ -11,7 +11,7 @@ export function Footer() {
           {/* Logo & Description */}
           <div className="space-y-4">
             <Image
-              src="/h4h-logo.png"
+              src="/images/h4h-logo.png"
               alt="Habitat for Humanity Western University"
               width={160}
               height={42}
