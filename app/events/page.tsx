@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { SectionHeader } from "@/components/section-header";
 import { EventCard } from "@/components/event-card";
-import { PhotoGrid } from "@/components/photo-grid";
 import { CTABanner } from "@/components/cta-banner";
-import { UPCOMING_EVENTS, PHOTO_GALLERY, EXTERNAL_LINKS } from "@/lib/data";
+import { UPCOMING_EVENTS, PAST_EVENTS, EXTERNAL_LINKS } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Events",
   description:
-    "Upcoming build days, fundraisers, and volunteer events from H4H Western. Plus a photo gallery of our past events.",
+    "Upcoming and past build days, fundraisers, and volunteer events from H4H Western.",
 };
 
 export default function EventsPage() {
@@ -46,15 +45,17 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Photo Legacy */}
+      {/* Past Events */}
       <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-4xl">
           <SectionHeader
-            title="Photo Legacy"
-            subtitle="Memories from our past events and build days"
+            title="Past Events"
+            subtitle="A look back at our previous builds, socials, and fundraisers"
           />
-          <div className="mt-12">
-            <PhotoGrid photos={PHOTO_GALLERY} />
+          <div className="mt-12 space-y-6">
+            {PAST_EVENTS.map((event) => (
+              <EventCard key={event.id} event={event} />
+            ))}
           </div>
         </div>
       </section>
