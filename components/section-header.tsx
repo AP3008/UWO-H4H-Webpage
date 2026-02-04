@@ -42,7 +42,6 @@ export function SectionHeader({
       <h2
         className="text-3xl font-bold text-h4h-navy sm:text-4xl"
         style={{
-          fontFamily: "var(--font-shadows), cursive",
           clipPath: visible ? "inset(0 0% 0 0)" : "inset(0 100% 0 0)",
           animation: visible ? "write-in 1.5s ease-out forwards" : "none",
         }}

@@ -72,7 +72,6 @@ export function HeroSection() {
             <h1
               className="mt-6 text-center text-xl font-bold text-white md:text-2xl lg:text-3xl"
               style={{
-                fontFamily: "var(--font-shadows), cursive",
                 ...(isMobile
                   ? {}
                   : {
