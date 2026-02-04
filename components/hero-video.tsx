@@ -21,7 +21,7 @@ export function HeroVideo() {
       loop
       muted
       playsInline
-      className="h-full w-full object-cover"
+      className="h-full w-full object-contain"
     />
   );
 }
