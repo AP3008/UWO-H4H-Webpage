@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function TeamPage() {
-  const vps = TEAM_MEMBERS.filter((m) => m.level === "vp");
+  const president = TEAM_MEMBERS.find((m) => m.role === "President");
+  const vps = TEAM_MEMBERS.filter(
+    (m) => m.level === "vp" && m.role !== "President"
+  );
   const directors = TEAM_MEMBERS.filter((m) => m.level === "director");
 
   // Group directors by department
@@ -37,13 +40,30 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* VPs Section */}
-      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      {/* President Section */}
+      {president && (
+        <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="text-center text-2xl font-bold text-h4h-navy">
+              President
+            </h2>
+            <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-h4h-cyan" />
+            <div className="mt-8 flex justify-center">
+              <div className="w-full max-w-sm">
+                <TeamCard member={president} />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Vice Presidents Section */}
+      <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl font-bold text-h4h-navy">
-            Executive Team
+          <h2 className="text-center text-2xl font-bold text-h4h-navy">
+            Vice Presidents
           </h2>
-          <div className="mt-2 h-1 w-12 rounded-full bg-h4h-cyan" />
+          <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-h4h-cyan" />
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {vps.map((member) => (
               <TeamCard key={member.id} member={member} />
@@ -53,10 +73,12 @@ export default function TeamPage() {
       </section>
 
       {/* Directors Section — grouped by department */}
-      <section className="bg-h4h-gray-50 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl font-bold text-h4h-navy">Directors</h2>
-          <div className="mt-2 h-1 w-12 rounded-full bg-h4h-cyan" />
+          <h2 className="text-center text-2xl font-bold text-h4h-navy">
+            Directors
+          </h2>
+          <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-h4h-cyan" />
 
           {Object.entries(departments).map(([dept, members]) => (
             <div key={dept} className="mt-10">
