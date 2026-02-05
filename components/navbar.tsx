@@ -15,20 +15,26 @@ import {
 } from "@/components/ui/sheet";
 import { NAV_LINKS, EXTERNAL_LINKS } from "@/lib/data";
 
-// Subtle sketchy bottom border for navbar
-function SketchyNavBorder() {
+// Ripped paper bottom edge for navbar
+function RippedPaperEdge() {
   return (
     <svg
-      className="absolute bottom-0 left-0 right-0 h-1 w-full text-h4h-gray-200"
-      viewBox="0 0 1200 4"
+      className="absolute -bottom-3 left-0 right-0 h-4 w-full pointer-events-none"
+      viewBox="0 0 1200 16"
       preserveAspectRatio="none"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      {/* Main torn edge - irregular jagged pattern */}
       <path
-        d="M0 2 Q50 0 100 2.5 Q150 4 200 2 Q250 0.5 300 2.5 Q350 4 400 2 Q450 0 500 2.5 Q550 4 600 2 Q650 0.5 700 2.5 Q750 4 800 2 Q850 0 900 2.5 Q950 4 1000 2 Q1050 0.5 1100 2.5 Q1150 3.5 1200 2"
-        stroke="currentColor"
-        strokeWidth="1.5"
+        d="M0 0 L0 4 L15 6 L25 3 L40 7 L52 4 L68 8 L85 5 L95 9 L110 6 L125 10 L140 5 L155 8 L172 4 L190 9 L205 6 L220 11 L238 7 L255 10 L270 5 L288 8 L305 12 L320 7 L338 9 L355 5 L372 10 L390 6 L408 11 L425 8 L440 13 L458 9 L475 12 L492 7 L510 10 L528 14 L545 9 L562 11 L580 6 L598 10 L615 13 L632 8 L650 11 L668 7 L685 12 L702 9 L720 14 L738 10 L755 13 L772 8 L790 11 L808 15 L825 10 L842 12 L860 7 L878 11 L895 14 L912 9 L930 12 L948 8 L965 13 L982 10 L1000 15 L1018 11 L1035 13 L1052 8 L1070 12 L1088 16 L1105 11 L1122 13 L1140 9 L1158 14 L1175 10 L1192 13 L1200 11 L1200 0 Z"
+        fill="white"
+      />
+      {/* Subtle shadow/texture line */}
+      <path
+        d="M0 4 L15 6 L25 3 L40 7 L52 4 L68 8 L85 5 L95 9 L110 6 L125 10 L140 5 L155 8 L172 4 L190 9 L205 6 L220 11 L238 7 L255 10 L270 5 L288 8 L305 12 L320 7 L338 9 L355 5 L372 10 L390 6 L408 11 L425 8 L440 13 L458 9 L475 12 L492 7 L510 10 L528 14 L545 9 L562 11 L580 6 L598 10 L615 13 L632 8 L650 11 L668 7 L685 12 L702 9 L720 14 L738 10 L755 13 L772 8 L790 11 L808 15 L825 10 L842 12 L860 7 L878 11 L895 14 L912 9 L930 12 L948 8 L965 13 L982 10 L1000 15 L1018 11 L1035 13 L1052 8 L1070 12 L1088 16 L1105 11 L1122 13 L1140 9 L1158 14 L1175 10 L1192 13 L1200 11"
+        stroke="#E2E8F0"
+        strokeWidth="0.5"
         fill="none"
       />
     </svg>
@@ -159,7 +165,7 @@ export function Navbar() {
           </Sheet>
         </div>
       </nav>
-      <SketchyNavBorder />
+      <RippedPaperEdge />
     </header>
   );
 }

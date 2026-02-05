@@ -86,17 +86,29 @@ function SquiggleDoodle({ className }: { className?: string }) {
   );
 }
 
-function SketchyBorder() {
+// Ripped paper right edge for sidebar
+function RippedPaperEdge() {
   return (
     <svg
-      className="absolute top-0 -right-6 h-full w-12 z-20 hidden md:block pointer-events-none"
-      viewBox="0 0 48 800"
+      className="absolute top-0 -right-4 h-full w-6 z-20 hidden md:block pointer-events-none"
+      viewBox="0 0 24 800"
       preserveAspectRatio="none"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      {/* Main torn edge - irregular jagged vertical pattern */}
       <path
-        d="M 48 0 L 22 0 Q 18 20 24 40 Q 28 60 20 80 Q 16 100 22 120 Q 26 140 18 160 Q 14 180 23 200 Q 28 220 19 240 Q 15 260 24 280 Q 27 300 17 320 Q 13 340 22 360 Q 26 380 18 400 Q 14 420 25 440 Q 29 460 20 480 Q 16 500 23 520 Q 27 540 17 560 Q 13 580 24 600 Q 28 620 19 640 Q 15 660 22 680 Q 26 700 18 720 Q 14 740 23 760 Q 27 780 20 800 L 48 800 Z"
-        fill="#0F172A"
+        d="M0 0 L4 0 L6 15 L3 25 L7 40 L4 52 L8 68 L5 85 L9 95 L6 110 L10 125 L5 140 L8 155 L4 172 L9 190 L6 205 L11 220 L7 238 L10 255 L5 270 L8 288 L12 305 L7 320 L9 338 L5 355 L10 372 L6 390 L11 408 L8 425 L13 440 L9 458 L12 475 L7 492 L10 510 L14 528 L9 545 L11 562 L6 580 L10 598 L13 615 L8 632 L11 650 L7 668 L12 685 L9 702 L14 720 L10 738 L13 755 L8 772 L11 790 L15 808 L10 825 L12 842 L7 860 L11 878 L14 895 L9 912 L12 930 L8 948 L13 965 L10 982 L15 1000 L0 1000 Z"
+        fill="white"
+        transform="scale(1, 0.8)"
+      />
+      {/* Subtle shadow/texture line */}
+      <path
+        d="M4 0 L6 15 L3 25 L7 40 L4 52 L8 68 L5 85 L9 95 L6 110 L10 125 L5 140 L8 155 L4 172 L9 190 L6 205 L11 220 L7 238 L10 255 L5 270 L8 288 L12 305 L7 320 L9 338 L5 355 L10 372 L6 390 L11 408 L8 425 L13 440 L9 458 L12 475 L7 492 L10 510 L14 528 L9 545 L11 562 L6 580 L10 598 L13 615 L8 632 L11 650 L7 668 L12 685 L9 702 L14 720 L10 738 L13 755 L8 772 L11 790 L15 808"
+        stroke="#E2E8F0"
+        strokeWidth="0.5"
+        fill="none"
+        transform="scale(1, 0.8)"
       />
     </svg>
   );
@@ -217,8 +229,8 @@ export function SketchySidebar({
       {/* Small squiggle */}
       <SquiggleDoodle className="mx-auto mt-3 text-h4h-navy opacity-40" />
 
-      {/* Sketchy right border (desktop only) */}
-      <SketchyBorder />
+      {/* Ripped paper right border (desktop only) */}
+      <RippedPaperEdge />
     </div>
   );
 }
