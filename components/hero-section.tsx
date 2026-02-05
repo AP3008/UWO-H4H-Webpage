@@ -43,7 +43,7 @@ export function HeroSection() {
             width: ${sidebarOpen ? "25%" : "0%"};
             min-width: ${sidebarOpen ? "25%" : "0px"};
             opacity: ${sidebarOpen ? "1" : "0"};
-            overflow: hidden;
+            overflow: visible;
             transition: width 1s cubic-bezier(0.4, 0, 0.2, 1),
                         min-width 1s cubic-bezier(0.4, 0, 0.2, 1),
                         opacity 0.5s ease 0.2s;
@@ -56,8 +56,8 @@ export function HeroSection() {
       `}</style>
 
       <div className="flex h-full flex-col md:flex-row">
-        {/* Left: Sketchy sidebar */}
-        <div className="hero-sidebar-wrapper relative flex w-full flex-col items-center justify-center bg-h4h-cyan-light px-6 py-12 md:py-0">
+        {/* Left: Sketchy sidebar - z-10 to appear above video */}
+        <div className="hero-sidebar-wrapper relative z-10 flex w-full flex-col items-center justify-center bg-h4h-cyan-light px-6 py-12 md:py-0">
           <SketchySidebar
             textAnimate={textAnimate}
             buttonVisible={buttonVisible}
@@ -65,8 +65,8 @@ export function HeroSection() {
           />
         </div>
 
-        {/* Right: Video (hidden on mobile) */}
-        <div className="hero-video-wrapper hidden h-full md:block">
+        {/* Right: Video (hidden on mobile) - z-0 so torn edge overlaps */}
+        <div className="hero-video-wrapper relative z-0 hidden h-full md:block">
           <HeroVideo />
         </div>
       </div>

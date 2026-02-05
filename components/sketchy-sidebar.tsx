@@ -86,31 +86,51 @@ function SquiggleDoodle({ className }: { className?: string }) {
   );
 }
 
-// Ripped paper right edge for sidebar
+// Ripped paper right edge for sidebar - extends INTO the video area
 function RippedPaperEdge() {
   return (
-    <svg
-      className="absolute top-0 -right-4 h-full w-6 z-20 hidden md:block pointer-events-none"
-      viewBox="0 0 24 800"
-      preserveAspectRatio="none"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className="absolute top-0 right-0 h-full w-8 z-20 hidden md:block pointer-events-none"
+      style={{ transform: "translateX(100%)" }}
     >
-      {/* Main torn edge - irregular jagged vertical pattern */}
-      <path
-        d="M0 0 L4 0 L6 15 L3 25 L7 40 L4 52 L8 68 L5 85 L9 95 L6 110 L10 125 L5 140 L8 155 L4 172 L9 190 L6 205 L11 220 L7 238 L10 255 L5 270 L8 288 L12 305 L7 320 L9 338 L5 355 L10 372 L6 390 L11 408 L8 425 L13 440 L9 458 L12 475 L7 492 L10 510 L14 528 L9 545 L11 562 L6 580 L10 598 L13 615 L8 632 L11 650 L7 668 L12 685 L9 702 L14 720 L10 738 L13 755 L8 772 L11 790 L15 808 L10 825 L12 842 L7 860 L11 878 L14 895 L9 912 L12 930 L8 948 L13 965 L10 982 L15 1000 L0 1000 Z"
-        fill="white"
-        transform="scale(1, 0.8)"
-      />
-      {/* Subtle shadow/texture line */}
-      <path
-        d="M4 0 L6 15 L3 25 L7 40 L4 52 L8 68 L5 85 L9 95 L6 110 L10 125 L5 140 L8 155 L4 172 L9 190 L6 205 L11 220 L7 238 L10 255 L5 270 L8 288 L12 305 L7 320 L9 338 L5 355 L10 372 L6 390 L11 408 L8 425 L13 440 L9 458 L12 475 L7 492 L10 510 L14 528 L9 545 L11 562 L6 580 L10 598 L13 615 L8 632 L11 650 L7 668 L12 685 L9 702 L14 720 L10 738 L13 755 L8 772 L11 790 L15 808"
-        stroke="#E2E8F0"
-        strokeWidth="0.5"
+      {/* Drop shadow for depth */}
+      <div
+        className="absolute inset-0"
+        style={{
+          filter: "drop-shadow(3px 0 6px rgba(0, 0, 0, 0.2))"
+        }}
+      >
+        <svg
+          className="h-full w-full"
+          viewBox="0 0 32 800"
+          preserveAspectRatio="none"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Torn edge extending into video - jagged right side, straight left side */}
+          <path
+            d="M0 0 L0 800 L4 800 L8 785 L5 770 L10 755 L6 740 L12 725 L7 710 L11 695 L5 680 L9 665 L13 650 L6 635 L10 620 L4 605 L11 590 L7 575 L13 560 L5 545 L9 530 L14 515 L6 500 L10 485 L4 470 L12 455 L7 440 L11 425 L5 410 L13 395 L8 380 L12 365 L4 350 L10 335 L6 320 L14 305 L8 290 L11 275 L5 260 L9 245 L13 230 L6 215 L10 200 L4 185 L12 170 L7 155 L11 140 L5 125 L13 110 L8 95 L12 80 L6 65 L10 50 L4 35 L8 20 L5 0 Z"
+            fill="#E0F5FA"
+            transform="scale(1, 1)"
+          />
+        </svg>
+      </div>
+      {/* Subtle texture line on torn edge */}
+      <svg
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 32 800"
+        preserveAspectRatio="none"
         fill="none"
-        transform="scale(1, 0.8)"
-      />
-    </svg>
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 800 L8 785 L5 770 L10 755 L6 740 L12 725 L7 710 L11 695 L5 680 L9 665 L13 650 L6 635 L10 620 L4 605 L11 590 L7 575 L13 560 L5 545 L9 530 L14 515 L6 500 L10 485 L4 470 L12 455 L7 440 L11 425 L5 410 L13 395 L8 380 L12 365 L4 350 L10 335 L6 320 L14 305 L8 290 L11 275 L5 260 L9 245 L13 230 L6 215 L10 200 L4 185 L12 170 L7 155 L11 140 L5 125 L13 110 L8 95 L12 80 L6 65 L10 50 L4 35 L8 20 L5 0"
+          stroke="#B8E6F2"
+          strokeWidth="1"
+          fill="none"
+        />
+      </svg>
+    </div>
   );
 }
 
