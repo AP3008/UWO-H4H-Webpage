@@ -129,6 +129,90 @@ export function SketchyDivider({
   );
 }
 
+interface RippedPaperDividerProps {
+  className?: string;
+  flip?: boolean;
+  topColor?: string;
+  bottomColor?: string;
+}
+
+// Ripped paper divider - creates a dramatic torn paper edge between sections
+// The torn edge uses a contrasting paperColor so it stands out against both sections
+export function RippedPaperDivider({
+  className,
+  flip = false,
+  topColor = "white",
+  bottomColor = "#F8FAFC",
+}: RippedPaperDividerProps) {
+  // Choose a paper color that contrasts with both sections
+  // For light→light transitions: use cyan-light (brand accent)
+  // For light→navy transitions: use a warm off-white/cream
+  const isNavyBottom = bottomColor === "#1B2A4A";
+  const paperColor = isNavyBottom ? "#E0F5FA" : "#E0F5FA";
+  const edgeStroke = isNavyBottom ? "#008FB3" : "#00AFD7";
+  const fiberStroke = isNavyBottom ? "#008FB3" : "#008FB3";
+
+  return (
+    <div className={`relative w-full h-12 ${className ?? ""}`} style={flip ? { transform: "scaleY(-1)" } : {}}>
+      {/* Top section fill extends down */}
+      <div className="absolute top-0 left-0 right-0 h-4" style={{ backgroundColor: topColor }} />
+
+      {/* Shadow layer for depth - offset down and slightly blurred */}
+      <svg
+        className="absolute top-1 left-0 w-full h-12 opacity-25"
+        viewBox="0 0 1200 48"
+        preserveAspectRatio="none"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ filter: "blur(3px)" }}
+      >
+        <path
+          d="M0 0 L0 18 L20 24 L35 14 L55 28 L75 16 L95 30 L115 18 L140 32 L160 20 L180 34 L200 22 L225 36 L250 24 L270 38 L295 26 L320 40 L345 28 L365 42 L390 30 L415 44 L440 32 L460 46 L485 34 L510 48 L535 36 L555 44 L580 32 L605 46 L630 34 L650 48 L675 36 L700 44 L725 32 L745 46 L770 34 L795 48 L820 36 L840 44 L865 32 L890 46 L915 34 L935 48 L960 36 L985 44 L1010 32 L1030 46 L1055 34 L1080 48 L1105 36 L1125 44 L1150 32 L1175 40 L1200 34 L1200 0 Z"
+          fill="#64748B"
+        />
+      </svg>
+
+      {/* Main torn edge SVG — uses paperColor so it contrasts with both sections */}
+      <svg
+        className="absolute top-0 left-0 w-full h-12"
+        viewBox="0 0 1200 48"
+        preserveAspectRatio="none"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Main torn edge shape filled with contrasting paper color */}
+        <path
+          d="M0 0 L0 18 L20 24 L35 14 L55 28 L75 16 L95 30 L115 18 L140 32 L160 20 L180 34 L200 22 L225 36 L250 24 L270 38 L295 26 L320 40 L345 28 L365 42 L390 30 L415 44 L440 32 L460 46 L485 34 L510 48 L535 36 L555 44 L580 32 L605 46 L630 34 L650 48 L675 36 L700 44 L725 32 L745 46 L770 34 L795 48 L820 36 L840 44 L865 32 L890 46 L915 34 L935 48 L960 36 L985 44 L1010 32 L1030 46 L1055 34 L1080 48 L1105 36 L1125 44 L1150 32 L1175 40 L1200 34 L1200 0 Z"
+          fill={paperColor}
+        />
+        {/* Visible texture/fiber line on the torn edge */}
+        <path
+          d="M0 18 L20 24 L35 14 L55 28 L75 16 L95 30 L115 18 L140 32 L160 20 L180 34 L200 22 L225 36 L250 24 L270 38 L295 26 L320 40 L345 28 L365 42 L390 30 L415 44 L440 32 L460 46 L485 34 L510 48 L535 36 L555 44 L580 32 L605 46 L630 34 L650 48 L675 36 L700 44 L725 32 L745 46 L770 34 L795 48 L820 36 L840 44 L865 32 L890 46 L915 34 L935 48 L960 36 L985 44 L1010 32 L1030 46 L1055 34 L1080 48 L1105 36 L1125 44 L1150 32 L1175 40 L1200 34"
+          stroke={edgeStroke}
+          strokeWidth="1.5"
+          fill="none"
+          opacity="0.4"
+        />
+        {/* Small fiber details */}
+        <g stroke={fiberStroke} strokeWidth="0.75" opacity="0.3">
+          <line x1="55" y1="28" x2="60" y2="34" />
+          <line x1="140" y1="32" x2="145" y2="38" />
+          <line x1="270" y1="38" x2="275" y2="44" />
+          <line x1="415" y1="44" x2="420" y2="48" />
+          <line x1="510" y1="48" x2="515" y2="52" />
+          <line x1="650" y1="48" x2="655" y2="52" />
+          <line x1="795" y1="48" x2="800" y2="52" />
+          <line x1="935" y1="48" x2="940" y2="52" />
+          <line x1="1080" y1="48" x2="1085" y2="52" />
+        </g>
+      </svg>
+
+      {/* Bottom section fill */}
+      <div className="absolute bottom-0 left-0 right-0 h-4" style={{ backgroundColor: bottomColor }} />
+    </div>
+  );
+}
+
 interface SketchyCardBorderProps {
   className?: string;
 }
